@@ -6,14 +6,13 @@
 #### Workflow
 - Protect (throttle and limit payload size)
 - Authenticate against API
-- Create new "empty" project with API
 - Validate request body
     - Is JSON
     - Is valid project object
+- Create new "empty" project with API
 - Upload to storage (S3)
-- Log to research DB
+- Log to research DB (via SQS)
 - Respond
-```
 
 ## Routes
 | Method | Path   | Description                                                |
