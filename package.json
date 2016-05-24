@@ -1,16 +1,27 @@
 {
-  "name": "<name>",
+  "name": "scratch-projects",
   "version": "1.0.0",
-  "description": "",
+  "description": "HTTP server for saving & retrieving Scratch projects.",
   "author": "Massachusetts Institute of Technology",
   "license": "BSD-3-Clause",
-  "homepage": "https://github.com/LLK/<name>#readme",
+  "homepage": "https://github.com/LLK/scratch-projects#readme",
   "repository": {
     "type": "git",
-    "url": "git+ssh://git@github.com/LLK/<name>.git"
+    "url": "git+ssh://git@github.com/LLK/scratch-projects.git"
   },
-  "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "make start",
+    "test": "make test"
+  },
+  "dependencies": {
+    "aws-sdk": "2.3.14",
+    "bunyan": "1.8.1",
+    "request": "2.72.0",
+    "restify": "4.1.0",
+    "restify-errors": "4.2.3"
+  },
+  "devDependencies": {
+    "eslint": "2.9.0",
+    "tap": "5.7.1"
   }
 }

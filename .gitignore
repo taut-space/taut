@@ -1,0 +1,15 @@
+## OSX
+.DS_Store
+
+## NPM
+/node_modules
+npm-*
+
+## Code Coverage
+.nyc_output/
+coverage/
+
+## Elastic Beanstalk Files
+.elasticbeanstalk/*
+!.elasticbeanstalk/*.cfg.yml
+!.elasticbeanstalk/*.global.yml
