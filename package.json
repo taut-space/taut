@@ -21,7 +21,7 @@
     "restify-errors": "4.2.3"
   },
   "devDependencies": {
-    "eslint": "2.9.0",
-    "tap": "5.7.1"
+    "eslint": "2.10.2",
+    "tap": "5.7.2"
   }
 }
