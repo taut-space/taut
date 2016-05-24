@@ -1,6 +1,8 @@
 ## scratch-projects
 #### HTTP server for saving & retrieving Scratch projects.
 
+[![Build Status](https://travis-ci.com/LLK/scratch-projects.svg?token=xzzHj4ct3SyBTpeqxnx1&branch=develop)](https://travis-ci.com/LLK/scratch-projects)
+
 ## Overview
 
 #### Workflow
