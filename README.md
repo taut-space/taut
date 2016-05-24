@@ -6,7 +6,9 @@
 ## Overview
 
 #### Workflow
-- Protect (throttle and limit payload size)
+- Protect
+    - Throttle
+    - Limit payload size (2.5 MB)
 - Authenticate against API
 - Validate request body
     - Is JSON
