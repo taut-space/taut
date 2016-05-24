@@ -1,5 +1,5 @@
-var test = require('tap').test;
-var routes = require('../../lib/routes');
+const test = require('tap').test;
+const routes = require('../../lib/routes');
 
 test('spec', function (t) {
     t.type(routes, 'object');

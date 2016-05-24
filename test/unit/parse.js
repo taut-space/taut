@@ -1,5 +1,5 @@
-var test = require('tap').test;
-var parse = require('../../lib/parse');
+const test = require('tap').test;
+const parse = require('../../lib/parse');
 
 test('spec', function (t) {
     t.type(parse, 'function');
@@ -7,7 +7,7 @@ test('spec', function (t) {
 });
 
 test('undefined', function (t) {
-    var req = {
+    const req = {
         body: undefined
     };
     parse(req, {}, function (err) {
@@ -18,7 +18,7 @@ test('undefined', function (t) {
 });
 
 test('undefined', function (t) {
-    var req = {
+    const req = {
         body: 'foobar'
     };
     parse(req, {}, function (err) {
@@ -29,7 +29,7 @@ test('undefined', function (t) {
 });
 
 test('object', function (t) {
-    var req = {
+    const req = {
         body: {}
     };
     parse(req, {}, function (err) {

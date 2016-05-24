@@ -1,5 +1,5 @@
-var test = require('tap').test;
-var auth = require('../../lib/auth');
+const test = require('tap').test;
+const auth = require('../../lib/auth');
 
 test('spec', function (t) {
     t.type(auth, 'function');

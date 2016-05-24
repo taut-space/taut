@@ -1,5 +1,5 @@
-var test = require('tap').test;
-var storage = require('../../lib/storage');
+const test = require('tap').test;
+const storage = require('../../lib/storage');
 
 test('spec', function (t) {
     t.type(storage, 'object');

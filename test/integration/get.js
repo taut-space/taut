@@ -1,5 +1,5 @@
-var test = require('tap').test;
-var request = require('request');
+const test = require('tap').test;
+const request = require('request');
 
 test('200', function (t) {
     request({

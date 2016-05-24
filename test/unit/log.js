@@ -1,5 +1,5 @@
-var test = require('tap').test;
-var log = require('../../lib/log');
+const test = require('tap').test;
+const log = require('../../lib/log');
 
 test('spec', function (t) {
     t.type(log, 'object');
@@ -11,8 +11,8 @@ test('spec', function (t) {
 });
 
 test('middleware', function (t) {
-    var req = {};
-    var res = {};
+    const req = {};
+    const res = {};
     log.middleware(req, res, function (err) {
         t.equal(err, undefined);
         t.end();
