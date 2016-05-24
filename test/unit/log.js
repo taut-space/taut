@@ -9,3 +9,12 @@ test('spec', function (t) {
     t.type(log.middleware, 'function');
     t.end();
 });
+
+test('middleware', function (t) {
+    var req = {};
+    var res = {};
+    log.middleware(req, res, function (err) {
+        t.equal(err, undefined);
+        t.end();
+    });
+});
