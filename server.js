@@ -21,6 +21,7 @@ server.use(restify.throttle({
 }));
 
 // Routes
+// @todo Add legacy routes for older versions of the editor
 server.post('/', auth, parse, routes.post);
 server.put('/:id', auth, parse, routes.put);
 server.get('/:id', routes.get);
