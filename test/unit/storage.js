@@ -27,9 +27,8 @@ test('get', function (t) {
 
 test('set', function (t) {
     var example = require('../fixtures/default');
-    storage.get(1, example, function (err, res) {
+    storage.set(1, example, function (err) {
         t.equal(err, null);
-        t.type(res, 'object');
         t.end();
     });
 });
