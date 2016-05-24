@@ -6,7 +6,7 @@ const parse = require('./lib/parse');
 const routes = require('./lib/routes');
 
 // Create HTTP server and bind middleware
-var server = restify.createServer();
+const server = restify.createServer();
 server.use(log.middleware);
 server.use(restify.bodyParser({
     maxBodySize: 2.5 * 1024 * 1024
@@ -21,10 +21,13 @@ server.use(restify.throttle({
 }));
 
 // Routes
-// @todo Add legacy routes for older versions of the editor
 server.post('/', auth, parse, routes.post);
 server.put('/:id', auth, parse, routes.put);
 server.get('/:id', routes.get);
+
+// Legacy routes (@deprecated)
+server.post('/internalapi/project/new/set', auth, parse, routes.post);
+server.post('/internalapi/project/:id/set', auth, parse, routes.put);
 
 // Start listening for HTTP requests
 const port = process.env.PORT || 8444;
