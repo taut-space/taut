@@ -27,7 +27,7 @@ server.put('/:id', auth, parse, routes.put);
 server.get('/:id', routes.get);
 
 // Start listening for HTTP requests
-var port = process.env.PORT || 8444;
+const port = process.env.PORT || 8444;
 server.listen(port, function () {
     log.info('Server listening on port ' + port);
 });
