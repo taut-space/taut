@@ -22,18 +22,19 @@
 - Respond
 
 ## Routes
-| Method | Path   | Description                                                |
-| ------ | ------ | ---------------------------------------------------------- |
-| `POST` | `/`    | Create a new project                                       |
-| `PUT`  | `/:id` | Update an existing project with the specified project ID   |
-| `GET`  | `/:id` | Get an existing project with the specified project ID      |
+| Method | Path   | Description                                                    |
+| ------ | ------ | -------------------------------------------------------------- |
+| `POST` | `/`    | Create a new project                                           |
+| `PUT`  | `/:id` | Update an existing project with the specified project ID       |
+| `GET`  | `/:id` | Get an existing project with the specified project ID          |
 
 ## Configuration
-| Variable                | Default  | Description                             |
-| ----------------------- | -------- | --------------------------------------- |
-| `AWS_S3_BUCKET`         | `String` | S3 bucket for saving / getting objects  |
-| `AWS_ACCESS_KEY_ID`     | `String` | AWS access key                          |
-| `AWS_SECRET_ACCESS_KEY` | `String` | AWS secret key                          |
+| Variable                | Default  | Description                                 |
+| ----------------------- | -------- | ------------------------------------------- |
+| `AWS_ACCESS_KEY_ID`     | `String` | AWS access key                              |
+| `AWS_SECRET_ACCESS_KEY` | `String` | AWS secret key                              |
+| `AWS_S3_BUCKET`         | `String` | S3 bucket for saving / getting objects      |
+| `API_HOST`              | `String` | API host for user auth and project creation |
 
 ## Running
 ```bash
