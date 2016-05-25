@@ -5,6 +5,9 @@
 
 ## Overview
 
+#### Architecture
+![](https://cloud.githubusercontent.com/assets/747641/15540768/31db0654-2257-11e6-8239-be894677323b.png)
+
 #### Workflow
 - Protect
     - Throttle
