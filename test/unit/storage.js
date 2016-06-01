@@ -6,6 +6,7 @@ test('spec', function (t) {
     t.type(storage.has, 'function');
     t.type(storage.get, 'function');
     t.type(storage.set, 'function');
+    t.type(storage.health, 'function');
     t.end();
 });
 
@@ -31,4 +32,13 @@ test('set', function (t) {
         t.equal(err, null);
         t.end();
     });
+});
+
+test('health', function (t) {
+    var result = storage.health();
+    t.type(result, 'object');
+    t.equal(result.ssl, true);
+    t.equal(result.region, 'us-east-1');
+    t.type(result.retries, 'number');
+    t.end();
 });

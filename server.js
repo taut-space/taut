@@ -21,6 +21,7 @@ server.use(restify.throttle({
 }));
 
 // Routes
+server.get('/health', routes.health);
 server.post('/', auth, parse, routes.post);
 server.put('/:id', auth, parse, routes.put);
 server.get('/:id', routes.get);
