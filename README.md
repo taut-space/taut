@@ -22,11 +22,13 @@
 - Respond
 
 ## Routes
-| Method | Path   | Description                                                    |
-| ------ | ------ | -------------------------------------------------------------- |
-| `POST` | `/`    | Create a new project                                           |
-| `PUT`  | `/:id` | Update an existing project with the specified project ID       |
-| `GET`  | `/:id` | Get an existing project with the specified project ID          |
+| Method | Path      | Description                                                 |
+| ------ | --------- | ----------------------------------------------------------- |
+| `GET`  | `/health` | Returns basic health information (used for load balancing)  |
+| `POST` | `/`       | Create a new project                                        |
+| `PUT`  | `/:id`    | Update an existing project with the specified project ID    |
+| `GET`  | `/:id`    | Get an existing project with the specified project ID       |
+
 
 ## Configuration
 | Variable                | Default  | Description                                 |
