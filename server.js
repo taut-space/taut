@@ -1,3 +1,7 @@
+if (typeof process.env.NEW_RELIC_LICENSE_KEY === 'string') {
+    require('newrelic');
+}
+
 const restify = require('restify');
 
 const auth = require('./lib/auth');
