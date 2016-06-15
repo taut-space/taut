@@ -15,5 +15,9 @@
     "env": {
         "node": true
     },
+    "globals": {
+        "Uint8Array": false,
+        "Uint16Array": false
+    },
     "extends": "eslint:recommended"
 }

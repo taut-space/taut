@@ -4,26 +4,32 @@ const request = require('request');
 test('200', function (t) {
     request({
         method: 'PUT',
-        uri: 'http://localhost:8444/1',
-        json: require('../fixtures/default.json')
+        uri: 'http://localhost:8444/113799886',
+        json: require('../fixtures/default.json'),
+        headers: {
+            Cookie: require('../fixtures/users.json').valid
+        }
     }, function (err, res, body) {
         t.equal(err, null);
+        t.equal(res.statusCode, 200);
         t.type(res, 'object');
-        t.type(res.statusCode, 200);
         t.type(body, 'object');
         t.end();
     });
 });
 
-test('404', function (t) {
+test('403', function (t) {
     request({
         method: 'PUT',
-        uri: 'http://localhost:8444/foobar',
-        json: {}
+        uri: 'http://localhost:8444/113799886',
+        json: require('../fixtures/default.json'),
+        headers: {
+            Cookie: require('../fixtures/users.json').invalid
+        }
     }, function (err, res, body) {
         t.equal(err, null);
+        t.equal(res.statusCode, 403);
         t.type(res, 'object');
-        t.type(res.statusCode, 404);
         t.type(body, 'object');
         t.end();
     });
