@@ -12,6 +12,7 @@
 - Protect
     - Throttle
     - Limit payload size (2.5 MB)
+- Unsign session cookie
 - Authenticate against API
 - Validate request body
     - Is JSON
