@@ -18,7 +18,6 @@
     - Is valid project object
 - Create new "empty" project with API
 - Upload to storage (S3)
-- Log to research DB (via SQS)
 - Respond
 
 ## Routes
@@ -31,12 +30,16 @@
 
 
 ## Configuration
-| Variable                | Default  | Description                                 |
+| Variable                | Type     | Description                                 |
 | ----------------------- | -------- | ------------------------------------------- |
 | `AWS_ACCESS_KEY_ID`     | `String` | AWS access key                              |
 | `AWS_SECRET_ACCESS_KEY` | `String` | AWS secret key                              |
 | `AWS_S3_BUCKET`         | `String` | S3 bucket for saving / getting objects      |
+|                         |          |                                             |
 | `API_HOST`              | `String` | API host for user auth and project creation |
+|                         |          |                                             |
+| `SESSION_SALT`          | `String` | Salt for session cookie cryptography        |
+| `SESSION_SECRET`        | `String` | Secret key for session cookie cryptography  |
 
 ## Running
 ```bash
