@@ -1,6 +1,7 @@
 ESLINT=./node_modules/.bin/eslint
 KNEX=./node_modules/.bin/knex
 TAP=./node_modules/.bin/tap
+WRK=/usr/local/bin/wrk
 
 # ------------------------------------------------------------------------------
 
@@ -23,4 +24,9 @@ coverage:
 
 # ------------------------------------------------------------------------------
 
-.PHONY: start lint test coverage
+load:
+	$(WRK) -t 1 -c 1 -d 60m --latency -s ./test/fixtures/post.lua http://scratch-projects-stage.us-east-1.elasticbeanstalk.com
+
+# ------------------------------------------------------------------------------
+
+.PHONY: start lint test coverage load
