@@ -31,6 +31,7 @@ server.use(restify.throttle({
 // Routes
 server.get('/', routes.health);
 server.get('/health', routes.health);
+server.get('/crossdomain.xml', routes.crossdomain);
 server.post('/', auth, parse, create, routes.post);
 server.put('/:id', auth, own, parse, routes.put);
 server.get('/:id', routes.get);
