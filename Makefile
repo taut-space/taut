@@ -25,7 +25,10 @@ coverage:
 # ------------------------------------------------------------------------------
 
 load:
-	$(WRK) -t 1 -c 1 -d 60m --latency -s ./test/fixtures/post.lua http://scratch-projects-stage.us-east-1.elasticbeanstalk.com
+	$(WRK) -t 2 -c 2 -d 10s --latency http://scratch-projects-stage.us-east-1.elasticbeanstalk.com/health
+	$(WRK) -t 2 -c 2 -d 10s --latency http://scratch-projects-stage.us-east-1.elasticbeanstalk.com/114137267
+	$(WRK) -t 2 -c 2 -d 10s --latency -s ./test/fixtures/post.lua http://scratch-projects-stage.us-east-1.elasticbeanstalk.com
+	$(WRK) -t 2 -c 2 -d 10s --latency -s ./test/fixtures/put.lua http://scratch-projects-stage.us-east-1.elasticbeanstalk.com/114137267
 
 # ------------------------------------------------------------------------------
 
