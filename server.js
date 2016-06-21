@@ -38,6 +38,8 @@ server.put('/:id', auth, own, parse, routes.put);
 server.get('/:id', routes.get);
 
 // Legacy routes (@deprecated)
+server.get('/internalapi/project/:id/get', routes.get);
+server.get('/internalapi/project/:id/get/:hash', routes.get);
 server.post('/internalapi/project/new/set', auth, parse, create, routes.post);
 server.post('/internalapi/project/:id/set', auth, own, parse, routes.put);
 
