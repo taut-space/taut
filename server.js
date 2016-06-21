@@ -21,12 +21,12 @@ server.use(restify.bodyParser({
 }));
 server.use(restify.queryParser());
 server.use(restify.CORS());
-server.use(restify.throttle({
-    burst: 25,
-    rate: 10,
-    xff: true,
-    maxKeys: 5000
-}));
+// server.use(restify.throttle({
+//     burst: 25,
+//     rate: 10,
+//     xff: true,
+//     maxKeys: 5000
+// }));
 
 // Routes
 server.get('/', routes.health);
