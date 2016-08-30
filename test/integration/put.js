@@ -4,7 +4,7 @@ const request = require('request');
 test('200', function (t) {
     request({
         method: 'PUT',
-        uri: 'http://localhost:8444/113799886',
+        uri: 'http://localhost:8444/1000013887',
         json: require('../fixtures/default.json'),
         headers: {
             Cookie: require('../fixtures/users.json').valid
@@ -21,7 +21,7 @@ test('200', function (t) {
 test('403', function (t) {
     request({
         method: 'PUT',
-        uri: 'http://localhost:8444/113799886',
+        uri: 'http://localhost:8444/1000013887',
         json: require('../fixtures/default.json'),
         headers: {
             Cookie: require('../fixtures/users.json').invalid

@@ -4,7 +4,7 @@ const request = require('request');
 test('200', function (t) {
     request({
         method: 'GET',
-        uri: 'http://localhost:8444/internalapi/project/113799886/get/',
+        uri: 'http://localhost:8444/internalapi/project/1000013887/get/',
         json: {}
     }, function (err, res, body) {
         t.equal(err, null);
@@ -18,7 +18,7 @@ test('200', function (t) {
 test('200', function (t) {
     request({
         method: 'GET',
-        uri: 'http://localhost:8444/internalapi/project/113799886/get/foo',
+        uri: 'http://localhost:8444/internalapi/project/1000013887/get/foo',
         json: {}
     }, function (err, res, body) {
         t.equal(err, null);
@@ -32,7 +32,7 @@ test('200', function (t) {
 test('200', function (t) {
     request({
         method: 'POST',
-        uri: 'http://localhost:8444/internalapi/project/113799886/set',
+        uri: 'http://localhost:8444/internalapi/project/1000013887/set',
         json: require('../fixtures/default.json'),
         headers: {
             Cookie: require('../fixtures/users.json').valid
