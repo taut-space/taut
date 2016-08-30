@@ -4,7 +4,7 @@ const request = require('request');
 test('200', function (t) {
     request({
         method: 'POST',
-        uri: 'http://localhost:8444/',
+        uri: 'http://localhost:8444/?title=foobar',
         json: require('../fixtures/default.json'),
         headers: {
             Cookie: require('../fixtures/users.json').valid
