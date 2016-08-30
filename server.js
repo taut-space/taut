@@ -18,7 +18,7 @@ server.use(log.middleware);
 server.use(cookies.parse);
 server.pre(restify.pre.sanitizePath());
 server.use(restify.bodyParser({
-    maxBodySize: 2.5 * 1024 * 1024
+    maxBodySize: 2.5 * 1000 * 1000
 }));
 server.use(restify.queryParser());
 server.use(restify.CORS());
