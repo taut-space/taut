@@ -29,6 +29,12 @@ server.use(restify.throttle({
     maxKeys: 5000
 }));
 
+// Handle uncaught exceptions
+server.on('uncaughtException', (req, res, route, err) => {
+    log.error(err);
+    res.send(500);
+});
+
 // Routes
 server.get('/', routes.health);
 server.get('/health', routes.health);
