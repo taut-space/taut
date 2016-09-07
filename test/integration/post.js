@@ -34,3 +34,20 @@ test('403', function (t) {
         t.end();
     });
 });
+
+test('413', function (t) {
+    request({
+        method: 'POST',
+        uri: 'http://localhost:8444/?title=Untitled',
+        json: require('../fixtures/large.json'),
+        headers: {
+            Cookie: require('../fixtures/users.json').valid
+        }
+    }, function (err, res, body) {
+        t.equal(err, null);
+        t.equal(res.statusCode, 413);
+        t.type(res, 'object');
+        t.type(body, 'object');
+        t.end();
+    });
+});
