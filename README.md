@@ -6,7 +6,7 @@
 ## Overview
 
 #### Architecture
-![](https://cloud.githubusercontent.com/assets/747641/15540768/31db0654-2257-11e6-8239-be894677323b.png)
+![](https://cloud.githubusercontent.com/assets/747641/23216546/52ee39ec-f8e4-11e6-9dbf-9cc29aa8fc62.png)
 
 #### Workflow
 - Protect
