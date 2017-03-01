@@ -1,5 +1,4 @@
 ESLINT=./node_modules/.bin/eslint
-KNEX=./node_modules/.bin/knex
 TAP=./node_modules/.bin/tap
 WRK=/usr/local/bin/wrk
 
@@ -17,12 +16,18 @@ lint:
 
 test:
 	@make lint
-	$(TAP) ./test/{unit,functional,integration}/*.js
+	$(TAP) ./test/unit/*.js
 
 coverage:
-	$(TAP) ./test/{unit,functional,integration}/*.js --coverage --coverage-report=lcov
+	$(TAP) ./test/unit/*.js --coverage --coverage-report=lcov
 
 # ------------------------------------------------------------------------------
+
+smoke:
+	@echo 'Running smoke tests against SMOKE_HOST'
+	@echo 'Ensure AWS_ACCESS_KEY_ID and AWS_SECRET_ACCESS_KEY are set when targeting `localhost`.'
+	@echo 'See README.md for details.'
+	$(TAP) ./test/smoke/*.js
 
 load:
 	$(WRK) -t 2 -c 2 -d 10s --latency http://scratch-projects-stage.us-east-1.elasticbeanstalk.com/health
@@ -33,4 +38,4 @@ load:
 
 # ------------------------------------------------------------------------------
 
-.PHONY: start lint test coverage load
+.PHONY: start lint test coverage smoke load

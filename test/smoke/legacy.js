@@ -1,10 +1,12 @@
 const test = require('tap').test;
 const request = require('request');
 
+const host = process.env.SMOKE_HOST || 'http://localhost:8444';
+
 test('200', function (t) {
     request({
         method: 'GET',
-        uri: 'http://localhost:8444/internalapi/project/1000013887/get/',
+        uri: host + '/internalapi/project/1000013887/get/',
         json: {}
     }, function (err, res, body) {
         t.equal(err, null);
@@ -18,7 +20,7 @@ test('200', function (t) {
 test('200', function (t) {
     request({
         method: 'GET',
-        uri: 'http://localhost:8444/internalapi/project/1000013887/get/foo',
+        uri: host + '/internalapi/project/1000013887/get/foo',
         json: {}
     }, function (err, res, body) {
         t.equal(err, null);
@@ -32,7 +34,7 @@ test('200', function (t) {
 test('200', function (t) {
     request({
         method: 'POST',
-        uri: 'http://localhost:8444/internalapi/project/1000013887/set',
+        uri: host + '/internalapi/project/1000013887/set',
         json: require('../fixtures/default.json'),
         headers: {
             Cookie: require('../fixtures/users.json').valid
@@ -49,7 +51,7 @@ test('200', function (t) {
 test('200', function (t) {
     request({
         method: 'POST',
-        uri: 'http://localhost:8444/internalapi/project/new/set/',
+        uri: host + '/internalapi/project/new/set/',
         json: require('../fixtures/default.json'),
         headers: {
             Cookie: require('../fixtures/users.json').valid

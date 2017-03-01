@@ -1,10 +1,12 @@
 const test = require('tap').test;
 const request = require('request');
 
+const host = process.env.SMOKE_HOST || 'http://localhost:8444';
+
 test('200', function (t) {
     request({
         method: 'GET',
-        uri: 'http://localhost:8444/1',
+        uri: host + '/1',
         json: {}
     }, function (err, res, body) {
         t.equal(err, null);
@@ -18,7 +20,7 @@ test('200', function (t) {
 test('200', function (t) {
     request({
         method: 'GET',
-        uri: 'http://localhost:8444/1000013887',
+        uri: host + '/1000013887',
         json: {}
     }, function (err, res, body) {
         t.equal(err, null);
@@ -32,7 +34,7 @@ test('200', function (t) {
 test('404', function (t) {
     request({
         method: 'GET',
-        uri: 'http://localhost:8444/foobar',
+        uri: host + '/foobar',
         json: {}
     }, function (err, res, body) {
         t.equal(err, null);

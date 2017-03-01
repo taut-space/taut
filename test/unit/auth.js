@@ -1,16 +1,19 @@
 const test = require('tap').test;
 const auth = require('../../lib/auth');
-const users = require('../fixtures/users.json');
 
 test('spec', function (t) {
     t.type(auth, 'function');
     t.end();
 });
 
-test('valid cookie', function (t) {
+test('valid', function (t) {
     const req = {
+        headers: {
+            cookie: 'foobar'
+        },
         cookies: {
-            scratchsessionsid: users.valid_session
+            scratchsessionsid: 'foo',
+            scratchcsrftoken: 'bar'
         }
     };
     auth(req, {}, function (err) {
@@ -19,10 +22,11 @@ test('valid cookie', function (t) {
     });
 });
 
-test('invalid cookie', function (t) {
+test('missing cookie header', function (t) {
     const req = {
         cookies: {
-            scratchsessionsid: users.invalid_session
+            scratchsessionsid: 'foo',
+            scratchcsrftoken: 'bar'
         }
     };
     auth(req, {}, function (err) {
@@ -31,9 +35,29 @@ test('invalid cookie', function (t) {
     });
 });
 
-test('no cookie', function (t) {
+test('missing session', function (t) {
     const req = {
-        cookies: {}
+        headers: {
+            cookie: 'foobar'
+        },
+        cookies: {
+            scratchcsrftoken: 'bar'
+        }
+    };
+    auth(req, {}, function (err) {
+        t.type(err, 'object');
+        t.end();
+    });
+});
+
+test('missing csrf', function (t) {
+    const req = {
+        headers: {
+            cookie: 'foobar'
+        },
+        cookies: {
+            scratchsessionsid: 'foo'
+        }
     };
     auth(req, {}, function (err) {
         t.type(err, 'object');
