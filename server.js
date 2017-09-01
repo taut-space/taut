@@ -8,9 +8,9 @@ const cookies = require('restify-cookies');
 const auth = require('./lib/auth');
 const create = require('./lib/create');
 const log = require('./lib/log');
-const own = require('./lib/own');
 const parse = require('./lib/parse');
 const routes = require('./lib/routes');
+const update = require('./lib/update');
 
 // Create HTTP server and bind middleware
 const server = restify.createServer();
@@ -39,15 +39,18 @@ server.on('uncaughtException', (req, res, route, err) => {
 server.get('/', routes.health);
 server.get('/health', routes.health);
 server.get('/crossdomain.xml', routes.crossdomain);
-server.post('/', auth, parse, create, routes.post);
-server.put('/:id', auth, own, parse, routes.put);
+
+// 3.0 routes
 server.get('/:id', routes.get);
+server.get('/:id/:hash', routes.get);
+server.post('/', auth, parse, create, routes.post);
+server.put('/:id', auth, parse, update, routes.put);
 
 // Legacy routes (@deprecated)
 server.get('/internalapi/project/:id/get', routes.get);
 server.get('/internalapi/project/:id/get/:hash', routes.get);
 server.post('/internalapi/project/new/set', auth, parse, create, routes.post);
-server.post('/internalapi/project/:id/set', auth, own, parse, routes.put);
+server.post('/internalapi/project/:id/set', auth, parse, update, routes.put);
 
 // Start listening for HTTP requests
 const port = process.env.PORT || 8444;

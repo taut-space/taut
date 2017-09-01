@@ -39,10 +39,8 @@ test('set', function (t) {
     var example = require('../fixtures/default');
     storage.set(
         1,
+        'uploadtest',
         example,
-        {
-            username: 'uploadtest'
-        },
         function (err) {
             t.equal(err, null);
             t.end();

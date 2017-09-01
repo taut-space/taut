@@ -6,18 +6,17 @@
 ## Overview
 
 #### Architecture
-![](https://cloud.githubusercontent.com/assets/747641/15540768/31db0654-2257-11e6-8239-be894677323b.png)
+![](https://cloud.githubusercontent.com/assets/747641/23216546/52ee39ec-f8e4-11e6-9dbf-9cc29aa8fc62.png)
 
 #### Workflow
 - Protect
     - Throttle
     - Limit payload size (2.5 MB)
-- Unsign session cookie
-- Authenticate against API
+- Unpack cookies
 - Validate request body
     - Is JSON
     - Is valid project object
-- Create new "empty" project with API
+- Create new project with backend
 - Upload to storage (S3)
 - Respond
 
@@ -29,7 +28,6 @@
 | `PUT`  | `/:id`    | Update an existing project with the specified project ID    |
 | `GET`  | `/:id`    | Get an existing project with the specified project ID       |
 
-
 ## Configuration
 | Variable                | Type     | Description                                 |
 | ----------------------- | -------- | ------------------------------------------- |
@@ -37,10 +35,7 @@
 | `AWS_SECRET_ACCESS_KEY` | `String` | AWS secret key                              |
 | `AWS_S3_BUCKET`         | `String` | S3 bucket for saving / getting objects      |
 |                         |          |                                             |
-| `API_HOST`              | `String` | API host for user auth and project creation |
-|                         |          |                                             |
-| `SESSION_SALT`          | `String` | Salt for session cookie cryptography        |
-| `SESSION_SECRET`        | `String` | Secret key for session cookie cryptography  |
+| `BACKEND_HOST`          | `String` | Host for backend auth and project creation  |
 
 ## Running
 ```bash
