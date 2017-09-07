@@ -12,6 +12,11 @@ const parse = require('./lib/parse');
 const routes = require('./lib/routes');
 const update = require('./lib/update');
 
+const USE_THROTTLE = parseInt(process.env.USE_THROTTLE || '1');
+const THROTTLE_BURST = parseInt(process.env.THROTTLE_BURST || '25');
+const THROTTLE_RATE = parseInt(process.env.THROTTLE_RATE || '10');
+const THROTTLE_MAX_KEYS = parseInt(process.env.THROTTLE_MAX_KEYS || '5000');
+
 // Create HTTP server and bind middleware
 const server = restify.createServer();
 server.use(log.middleware);
@@ -22,12 +27,15 @@ server.use(restify.bodyParser({
 }));
 server.use(restify.queryParser());
 server.use(restify.CORS());
-server.use(restify.throttle({
-    burst: 25,
-    rate: 10,
-    xff: true,
-    maxKeys: 5000
-}));
+
+if (USE_THROTTLE) {
+    server.use(restify.throttle({
+        burst: THROTTLE_BURST,
+        rate: THROTTLE_RATE,
+        xff: true,
+        maxKeys: THROTTLE_MAX_KEYS
+    }));
+}
 
 // Handle uncaught exceptions
 server.on('uncaughtException', (req, res, route, err) => {
