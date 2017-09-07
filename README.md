@@ -29,13 +29,16 @@
 | `GET`  | `/:id`    | Get an existing project with the specified project ID       |
 
 ## Configuration
-| Variable                | Type     | Description                                 |
-| ----------------------- | -------- | ------------------------------------------- |
-| `AWS_ACCESS_KEY_ID`     | `String` | AWS access key                              |
-| `AWS_SECRET_ACCESS_KEY` | `String` | AWS secret key                              |
-| `AWS_S3_BUCKET`         | `String` | S3 bucket for saving / getting objects      |
-|                         |          |                                             |
-| `BACKEND_HOST`          | `String` | Host for backend auth and project creation  |
+| Variable                   | Type     | Description                                 |
+| -------------------------- | -------- | ------------------------------------------- |
+| `AWS_ACCESS_KEY_ID`        | `String` | AWS access key                              |
+| `AWS_SECRET_ACCESS_KEY`    | `String` | AWS secret key                              |
+| `AWS_S3_BUCKET`            | `String` | S3 bucket for saving / getting objects      |
+|                            |          |                                             |
+| `BACKEND_HOST`             | `String` | Host for backend auth and project creation  |
+|                            |          |                                             |
+| `EB_AWS_ACCESS_KEY_ID`     | `String` | AWS access key for deployment               |
+| `EB_AWS_SECRET_ACCESS_KEY` | `String` | AWS secret key for deployment               |
 
 ## Running
 ```bash
