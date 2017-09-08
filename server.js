@@ -12,10 +12,10 @@ const parse = require('./lib/parse');
 const routes = require('./lib/routes');
 const update = require('./lib/update');
 
-const USE_THROTTLE = parseInt(process.env.USE_THROTTLE || '1');
-const THROTTLE_BURST = parseInt(process.env.THROTTLE_BURST || '25');
-const THROTTLE_RATE = parseInt(process.env.THROTTLE_RATE || '10');
-const THROTTLE_MAX_KEYS = parseInt(process.env.THROTTLE_MAX_KEYS || '5000');
+const USE_THROTTLE = parseInt(process.env.USE_THROTTLE || '1', 10);
+const THROTTLE_BURST = parseInt(process.env.THROTTLE_BURST || '25', 10);
+const THROTTLE_RATE = parseInt(process.env.THROTTLE_RATE || '10', 10);
+const THROTTLE_MAX_KEYS = parseInt(process.env.THROTTLE_MAX_KEYS || '5000', 10);
 
 // Create HTTP server and bind middleware
 const server = restify.createServer();
