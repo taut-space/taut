@@ -5,3 +5,38 @@ sudo: false
 cache:
   directories:
   - node_modules
+env:
+  global:
+  - EB_REGION=us-east-1
+  - EB_APP=scratch-projects
+  - EB_AWS_BUCKET_NAME=elasticbeanstalk-us-east-1-307680192167
+  - ELASTIC_BEANSTALK_LABEL=${TRAVIS_COMMIT:0:5}
+  - SKIP_CLEANUP=true
+deploy:
+- provider: elasticbeanstalk
+  access_key_id: $EB_AWS_ACCESS_KEY_ID
+  secret_access_key: $EB_AWS_SECRET_ACCESS_KEY
+  bucket_name: $EB_AWS_BUCKET_NAME
+  bucket_path: $EB_APP
+  region: $EB_REGION
+  app: $EB_APP
+  skip_cleanup: $SKIP_CLEANUP
+  env: scratch-projects-stage
+  on:
+    repo: LLK/scratch-projects
+    branch:
+    - develop
+    - hotfix/*
+    - release/*
+- provider: elasticbeanstalk
+  access_key_id: $EB_AWS_ACCESS_KEY_ID
+  secret_access_key: $EB_AWS_SECRET_ACCESS_KEY
+  bucket_name: $EB_AWS_BUCKET_NAME
+  bucket_path: $EB_APP
+  region: $EB_REGION
+  app: $EB_APP
+  skip_cleanup: $SKIP_CLEANUP
+  env: scratch-projects-prod
+  on:
+    repo: LLK/scratch-projects
+    branch: master
