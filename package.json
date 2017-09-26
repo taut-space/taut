@@ -14,10 +14,11 @@
     "test": "make test"
   },
   "dependencies": {
+    "@newrelic/native-metrics": "2.1.1",
     "aws-sdk": "2.3.14",
     "bunyan": "1.8.5",
     "fastly": "^2.2.0",
-    "newrelic": "1.37.2",
+    "newrelic": "2.2.1",
     "request": "2.79.0",
     "restify": "4.3.0",
     "restify-cookies": "0.2.2",
