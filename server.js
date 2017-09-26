@@ -3,6 +3,7 @@ if (typeof process.env.NEW_RELIC_LICENSE_KEY === 'string') {
 }
 
 const restify = require('restify');
+const restifyCors = require('restify-cors-middleware');
 const cookies = require('restify-cookies');
 
 const auth = require('./lib/auth');
@@ -22,14 +23,24 @@ const server = restify.createServer();
 server.use(log.middleware);
 server.use(cookies.parse);
 server.pre(restify.pre.sanitizePath());
-server.use(restify.bodyParser({
+server.use(restify.plugins.bodyParser({
     maxBodySize: 2.5 * 1000 * 1000
 }));
-server.use(restify.queryParser());
-server.use(restify.CORS());
+server.use(restify.plugins.queryParser());
 
+// CORS
+var cors = restifyCors({
+    preflightMaxAge: 5,
+    origins: (process.env.CORS_ORIGINS || '*').split(','),
+    allowHeaders: [],
+    exposeHeaders: []
+});
+server.pre(cors.preflight);
+server.use(cors.actual);
+
+// Throttle
 if (USE_THROTTLE) {
-    server.use(restify.throttle({
+    server.use(restify.plugins.throttle({
         burst: THROTTLE_BURST,
         rate: THROTTLE_RATE,
         xff: true,
@@ -38,8 +49,8 @@ if (USE_THROTTLE) {
 }
 
 // Handle uncaught exceptions
-server.on('uncaughtException', (req, res, route, err) => {
-    log.error(err);
+server.on('restifyError', (req, res, err) => {
+    if (!err.handled) log.error(err);
     res.send(500);
 });
 

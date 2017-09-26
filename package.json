@@ -22,6 +22,7 @@
     "request": "~2.82.0",
     "restify": "~6.0.1",
     "restify-cookies": "~0.2.2",
+    "restify-cors-middleware": "~1.0.1",
     "restify-errors": "~5.0.0"
   },
   "devDependencies": {
