@@ -13,11 +13,6 @@ const parse = require('./lib/parse');
 const routes = require('./lib/routes');
 const update = require('./lib/update');
 
-const USE_THROTTLE = parseInt(process.env.USE_THROTTLE || '1', 10);
-const THROTTLE_BURST = parseInt(process.env.THROTTLE_BURST || '25', 10);
-const THROTTLE_RATE = parseInt(process.env.THROTTLE_RATE || '10', 10);
-const THROTTLE_MAX_KEYS = parseInt(process.env.THROTTLE_MAX_KEYS || '5000', 10);
-
 // Create HTTP server and bind middleware
 const server = restify.createServer();
 server.use(log.middleware);
@@ -32,13 +27,17 @@ server.use(restify.plugins.queryParser());
 var cors = restifyCors({
     preflightMaxAge: 5,
     origins: (process.env.CORS_ORIGINS || '*').split(','),
-    allowHeaders: [],
+    allowHeaders: ['x-requested-with', 'x-token', 'accept-language'],
     exposeHeaders: []
 });
 server.pre(cors.preflight);
 server.use(cors.actual);
 
 // Throttle
+const USE_THROTTLE = parseInt(process.env.USE_THROTTLE || '1', 10);
+const THROTTLE_BURST = parseInt(process.env.THROTTLE_BURST || '25', 10);
+const THROTTLE_RATE = parseInt(process.env.THROTTLE_RATE || '10', 10);
+const THROTTLE_MAX_KEYS = parseInt(process.env.THROTTLE_MAX_KEYS || '5000', 10);
 if (USE_THROTTLE) {
     server.use(restify.plugins.throttle({
         burst: THROTTLE_BURST,
