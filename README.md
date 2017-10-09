@@ -1,9 +1,8 @@
 ## scratch-projects
 #### HTTP server for saving & retrieving Scratch projects.
 
-[![Greenkeeper badge](https://badges.greenkeeper.io/LLK/scratch-projects.svg?token=4282dc28abec63c0c9db8f799091dbc1f0e0309bdc1967fe8146ec86b849b5c2&ts=1507571352230)](https://greenkeeper.io/)
-
 [![Build Status](https://travis-ci.com/LLK/scratch-projects.svg?token=xzzHj4ct3SyBTpeqxnx1&branch=develop)](https://travis-ci.com/LLK/scratch-projects)
+[![Greenkeeper badge](https://badges.greenkeeper.io/LLK/scratch-projects.svg?token=4282dc28abec63c0c9db8f799091dbc1f0e0309bdc1967fe8146ec86b849b5c2&ts=1507571352230)](https://greenkeeper.io/)
 
 ## Overview
 
