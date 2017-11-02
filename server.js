@@ -21,7 +21,9 @@ server.pre(restify.pre.sanitizePath());
 server.use(restify.plugins.bodyParser({
     maxBodySize: 2.5 * 1000 * 1000
 }));
-server.use(restify.plugins.queryParser());
+server.use(restify.queryParser({
+    mapParams: true
+}));
 
 // CORS
 var cors = restifyCors({
