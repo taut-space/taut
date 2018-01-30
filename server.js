@@ -7,19 +7,21 @@ const restifyCors = require('restify-cors-middleware');
 const cookies = require('restify-cookies');
 
 const auth = require('./lib/auth');
-const create = require('./lib/create');
+const session = require('./lib/session');
+const setup = require('./lib/setup');
 const log = require('./lib/log');
-const parse = require('./lib/parse');
 const routes = require('./lib/routes');
-const update = require('./lib/update');
 
 // Create HTTP server and bind middleware
 const server = restify.createServer();
 server.use(log.middleware);
 server.use(cookies.parse);
 server.pre(restify.pre.sanitizePath());
+
+// Max body size in megabytes
+const MAX_BODY_SIZE = parseInt(process.env.MAX_BODY_SIZE || '10', 10);
 server.use(restify.plugins.bodyParser({
-    maxBodySize: 2.5 * 1000 * 1000
+    maxBodySize: MAX_BODY_SIZE * 1024 * 1024
 }));
 server.use(restify.plugins.queryParser({
     mapParams: true
@@ -37,9 +39,11 @@ server.use(cors.actual);
 
 // Throttle
 const USE_THROTTLE = parseInt(process.env.USE_THROTTLE || '1', 10);
-const THROTTLE_BURST = parseInt(process.env.THROTTLE_BURST || '25', 10);
-const THROTTLE_RATE = parseInt(process.env.THROTTLE_RATE || '10', 10);
-const THROTTLE_MAX_KEYS = parseInt(process.env.THROTTLE_MAX_KEYS || '5000', 10);
+const THROTTLE_BURST = parseInt(process.env.THROTTLE_BURST || '200', 10);
+const THROTTLE_RATE = parseInt(process.env.THROTTLE_RATE || '50', 10);
+const THROTTLE_MAX_KEYS = parseInt(process.env.THROTTLE_MAX_KEYS || '10000',
+    10);
+
 if (USE_THROTTLE) {
     server.use(restify.plugins.throttle({
         burst: THROTTLE_BURST,
@@ -61,19 +65,16 @@ server.get('/health', routes.health);
 server.get('/crossdomain.xml', routes.crossdomain);
 
 // 3.0 routes
-server.get('/:id', routes.get);
-server.get('/:id/:hash', routes.get);
-server.post('/', auth, parse, create, routes.post);
-server.put('/:id', auth, parse, update, routes.put);
+server.get('/:hashname', routes.get);
+server.post('/:hashname', auth, session, setup, routes.post);
 
 // Legacy routes (@deprecated)
-server.get('/internalapi/project/:id/get', routes.get);
-server.get('/internalapi/project/:id/get/:hash', routes.get);
-server.post('/internalapi/project/new/set', auth, parse, create, routes.post);
-server.post('/internalapi/project/:id/set', auth, parse, update, routes.put);
+server.get('/internalapi/asset/:hashname/get', routes.get);
+server.post('/internalapi/asset/:hashname/set', auth, session, setup, routes.post);
 
 // Start listening for HTTP requests
-const port = process.env.PORT || 8444;
+const port = process.env.PORT || 8557;
 server.listen(port, function () {
     log.info('Server listening on port ' + port);
 });
+

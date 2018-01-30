@@ -1,13 +1,13 @@
 {
-  "name": "scratch-projects",
+  "name": "scratch-assets",
   "version": "1.0.0",
-  "description": "HTTP server for saving & retrieving Scratch projects.",
+  "description": "HTTP server for saving & retrieving Scratch assets.",
   "author": "Massachusetts Institute of Technology",
   "license": "private",
-  "homepage": "https://github.com/LLK/scratch-projects#readme",
+  "homepage": "https://github.com/LLK/scratch-assets#readme",
   "repository": {
     "type": "git",
-    "url": "git+ssh://git@github.com/LLK/scratch-projects.git"
+    "url": "git+ssh://git@github.com/LLK/scratch-assets.git"
   },
   "scripts": {
     "start": "make start",
