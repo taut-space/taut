@@ -1,13 +1,13 @@
 ## scratch-projects
-#### HTTP server for saving & retrieving Scratch assets.
+#### http server for saving & retrieving scratch assets.
 
-[![Build Status](https://travis-ci.com/LLK/scratch-projects.svg?token=xzzHj4ct3SyBTpeqxnx1&branch=develop)](https://travis-ci.com/LLK/scratch-projects)
-[![Greenkeeper badge](https://badges.greenkeeper.io/LLK/scratch-projects.svg?token=4282dc28abec63c0c9db8f799091dbc1f0e0309bdc1967fe8146ec86b849b5c2&ts=1507571352230)](https://greenkeeper.io/)
+[![Build Status](https://travis-ci.com/LLK/scratch-assets.svg?token=xzzHj4ct3SyBTpeqxnx1&branch=develop)](https://travis-ci.com/LLK/scratch-assets)
+[![Greenkeeper badge](https://badges.greenkeeper.io/LLK/scratch-assets.svg?token=4282dc28abec63c0c9db8f799091dbc1f0e0309bdc1967fe8146ec86b849b5c2&ts=1507571352230)](https://greenkeeper.io/)
 
 ## Overview
 
 #### Architecture
-![](https://cloud.githubusercontent.com/assets/747641/23216546/52ee39ec-f8e4-11e6-9dbf-9cc29aa8fc62.png)
+![](https://github.com/colbygk/scratch-assets/blob/4aad8750544d500099dea303570016575b69839c/architecture.png)
 
 #### Workflow
 
