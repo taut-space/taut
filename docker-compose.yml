@@ -1,0 +1,26 @@
+version: '3'
+
+services:
+  faux3:
+    container_name: scratch-faux3
+    hostname: faux3
+    image: scality/s3server
+    ports:
+      - "8558:8000"
+  scratch-assets:
+    container_name: scratch-assets
+    hostname: assets
+    environment:
+      - SESSION_SALT=${SESSION_SALT}
+      - SESSION_SECRET=${SESSION_SECRET}
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    image: scratch-assets:latest
+    command: npm start
+    ports:
+      - "8557:8557"
+    depends_on:
+      - faux3
+
+
