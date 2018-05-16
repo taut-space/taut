@@ -70,11 +70,16 @@ server.post('/:hashname', auth, session, setup, routes.post);
 
 // Legacy routes (@deprecated)
 server.get('/internalapi/asset/:hashname/get', routes.get);
-server.post('/internalapi/asset/:hashname/set', auth, session, setup, routes.post);
+server.post(
+    '/internalapi/asset/:hashname/set',
+    auth,
+    session,
+    setup,
+    routes.post
+);
 
 // Start listening for HTTP requests
 const port = process.env.PORT || 8557;
 server.listen(port, function () {
     log.info('Server listening on port ' + port);
 });
-
