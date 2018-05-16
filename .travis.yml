@@ -1,6 +1,6 @@
 language: node_js
 node_js:
-- '4.2'
+- '8'
 sudo: false
 cache:
   directories:
@@ -8,7 +8,7 @@ cache:
 env:
   global:
   - EB_REGION=us-east-1
-  - EB_APP=scratch-projects
+  - EB_APP=scratch-assets
   - EB_AWS_BUCKET_NAME=elasticbeanstalk-us-east-1-307680192167
   - ELASTIC_BEANSTALK_LABEL=${TRAVIS_COMMIT:0:5}
   - SKIP_CLEANUP=true
@@ -21,9 +21,9 @@ deploy:
   region: $EB_REGION
   app: $EB_APP
   skip_cleanup: $SKIP_CLEANUP
-  env: scratch-projects-stage
+  env: scratch-assets-staging
   on:
-    repo: LLK/scratch-projects
+    repo: LLK/scratch-assets
     branch:
     - develop
     - hotfix/*
@@ -36,7 +36,7 @@ deploy:
   region: $EB_REGION
   app: $EB_APP
   skip_cleanup: $SKIP_CLEANUP
-  env: scratch-projects-prod
+  env: scratch-assets-production
   on:
-    repo: LLK/scratch-projects
+    repo: LLK/scratch-assets
     branch: master

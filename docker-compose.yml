@@ -1,4 +1,8 @@
-version: '3'
+version: '3.4'
+
+volumes:
+  npm_data:
+  runtime_data:
 
 services:
   faux3:
@@ -9,18 +13,25 @@ services:
       - "8558:8000"
   scratch-assets:
     container_name: scratch-assets
+    image: scratch-assets:latest
     hostname: assets
     environment:
-      - SESSION_SALT=${SESSION_SALT}
-      - SESSION_SECRET=${SESSION_SECRET}
+      - CHOKIDAR_INTERVAL=2500
     build:
       context: ./
       dockerfile: Dockerfile
     image: scratch-assets:latest
-    command: npm start
+    command: nodemon --legacy-watch --ignore node_modules --ignore test/ server.js
+    volumes:
+      - type: bind
+        source: ./
+        target: /var/app/current
+        consistency: cached
+        volume:
+          nocopy: true
+      - npm_data:/var/app/current/node_modules
+      - runtime_data:/runtime
     ports:
       - "8557:8557"
     depends_on:
       - faux3
-
-
