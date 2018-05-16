@@ -13,6 +13,7 @@ services:
       - "8558:8000"
   scratch-assets:
     container_name: scratch-assets
+    image: scratch-assets:latest
     hostname: assets
     environment:
       - CHOKIDAR_INTERVAL=2500
@@ -34,5 +35,3 @@ services:
       - "8557:8557"
     depends_on:
       - faux3
-
-
