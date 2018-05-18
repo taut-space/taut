@@ -23,7 +23,8 @@
     "restify": "~5.2.0",
     "restify-cookies": "~0.2.2",
     "restify-cors-middleware": "~1.0.1",
-    "restify-errors": "~5.0.0"
+    "restify-errors": "~5.0.0",
+    "scratch-asset-types": "~1.1.0"
   },
   "devDependencies": {
     "eslint": "^4.7.2",
