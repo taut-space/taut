@@ -73,3 +73,24 @@ test('400', function (t) {
         t.end();
     });
 });
+
+
+// Send an object that is too damn big!
+// Send a good everything, get a 200 and json
+test('400', function (t) {
+    var image = fs.readFileSync('./test/fixtures/toobig.png');
+    request({
+        method: 'POST',
+        uri: host + '/a2248028b624155f2c0f2a968edd35dd.png',
+        body: image,
+        headers: {
+            Cookie: require('../fixtures/users.json').valid
+        }
+    }, function (err, res, body) {
+        t.equal(err, null);
+        t.equal(res.statusCode, 400);
+        t.type(res, 'object');
+        t.type(body, 'string');
+        t.end();
+    });
+});
