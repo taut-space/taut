@@ -18,10 +18,6 @@ server.use(log.middleware);
 server.use(cookies.parse);
 server.pre(restify.pre.sanitizePath());
 
-// Max body size in megabytes
-// Max size is enforced by checking on the streaming input
-const MAX_BODY_SIZE = parseInt(process.env.MAX_BODY_SIZE || '10', 10);
-
 // CORS
 var cors = restifyCors({
     preflightMaxAge: 5,
