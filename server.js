@@ -57,13 +57,12 @@ server.get('/crossdomain.xml', routes.crossdomain);
 
 // 3.0 routes
 server.get('/:hashname', routes.get);
-// server.post('/:hashname', auth, session, setup, routes.post);
-server.post('/:hashname', setup, routes.post);
+server.post('/:hashname', auth, session, setup, routes.post);
 
 // Legacy routes (@deprecated)
-server.get('/internalapi/asset/:hashname/get', routes.get);
+server.get('/internalapi/assets/:hashname/get/', routes.get);
 server.post(
-    '/internalapi/asset/:hashname/set',
+    '/internalapi/assets/:hashname/set/',
     auth,
     session,
     setup,
