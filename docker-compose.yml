@@ -5,18 +5,15 @@ volumes:
   runtime_data:
 
 services:
-  faux3:
-    container_name: scratch-faux3
-    hostname: faux3
-    image: scality/s3server
-    ports:
-      - "8558:8000"
   scratch-assets:
     container_name: scratch-assets
     image: scratch-assets:latest
-    hostname: assets
+    hostname: scratch-assets
     environment:
       - CHOKIDAR_INTERVAL=2500
+      - AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY_ID}
+      - AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY}
+      - AWS_S3_BUCKET=${AWS_S3_BUCKET}
     build:
       context: ./
       dockerfile: Dockerfile
@@ -31,7 +28,8 @@ services:
           nocopy: true
       - npm_data:/var/app/current/node_modules
       - runtime_data:/runtime
+      - "./certs:/certs"
     ports:
       - "8557:8557"
-    depends_on:
-      - faux3
+    networks:
+      - scratch_assets_network
