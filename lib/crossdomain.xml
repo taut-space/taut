@@ -1,20 +1,11 @@
 <cross-domain-policy>
     <allow-access-from domain="cdn.scratch.mit.edu" to-ports="*"/>
     <allow-access-from domain="scratch.mit.edu" to-ports="*"/>
-    <allow-access-from domain="staging.scratch.mit.edu" to-ports="*"/>
     <allow-access-from domain="*.scratch.ly" to-ports="*"/>
     <allow-access-from domain="scratch.ly" to-ports="*"/>
-    <allow-access-from domain="scratchly.global.ssl.fastly.net" to-ports="*"/>
-    <allow-access-from domain="projects-scratchly.global.ssl.fastly.net" to-ports="*"/>
-    <allow-access-from domain="assets-scratchly.global.ssl.fastly.net" to-ports="*"/>
-    <allow-access-from domain="acceptance-scratchly.global.ssl.fastly.net" to-ports="*"/>
     <allow-access-from domain="scratchx.org" secure="false"/>
     <allow-http-request-headers-from domain="*.scratch.mit.edu" headers="*"/>
     <allow-http-request-headers-from domain="scratch.mit.edu" headers="*"/>
     <allow-http-request-headers-from domain="*.scratch.ly" headers="*"/>
     <allow-http-request-headers-from domain="scratch.ly" headers="*"/>
-    <allow-http-request-headers-from domain="scratchly.global.ssl.fastly.net" headers="*"/>
-    <allow-http-request-headers-from domain="projects-scratchly.global.ssl.fastly.net" headers="*"/>
-    <allow-http-request-headers-from domain="assets-scratchly.global.ssl.fastly.net" headers="*"/>
-    <allow-http-request-headers-from domain="acceptance-scratchly.global.ssl.fastly.net" headers="*"/>
 </cross-domain-policy>
