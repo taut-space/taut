@@ -4,6 +4,9 @@ volumes:
   npm_data:
   runtime_data:
 
+networks:
+  scratch_assets_network:
+
 services:
   scratch-assets:
     container_name: scratch-assets
