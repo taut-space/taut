@@ -47,7 +47,7 @@ if (USE_THROTTLE) {
 // Handle uncaught exceptions
 server.on('restifyError', (req, res, err) => {
     if (!err.handled) log.error(err);
-    res.send(500);
+    res.send(err);
 });
 
 // Routes
