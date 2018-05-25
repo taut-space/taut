@@ -2,7 +2,7 @@
 #### http server for saving & retrieving scratch assets.
 
 [![Build Status](https://travis-ci.com/LLK/scratch-assets.svg?token=xzzHj4ct3SyBTpeqxnx1&branch=develop)](https://travis-ci.com/LLK/scratch-assets)
-[![Greenkeeper badge](https://badges.greenkeeper.io/LLK/scratch-assets.svg?token=4282dc28abec63c0c9db8f799091dbc1f0e0309bdc1967fe8146ec86b849b5c2&ts=1507571352230)](https://greenkeeper.io/)
+[![Greenkeeper badge](https://badges.greenkeeper.io/LLK/scratch-assets.svg?token=60538b212e62273e32ba817c779892fede97dd6575a84826f7205bea69338d02&ts=1526475781390)](https://greenkeeper.io/)
 
 ## Overview
 
