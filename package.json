@@ -15,7 +15,7 @@
   },
   "dependencies": {
     "@newrelic/native-metrics": "~2.4.0",
-    "aws-sdk": "~2.240.1",
+    "aws-sdk": "~2.246.1",
     "bunyan": "~1.8.12",
     "fastly": "~2.2.0",
     "newrelic": "~4.1.1",
