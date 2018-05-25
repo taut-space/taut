@@ -1,7 +1,7 @@
 const test = require('tap').test;
 const request = require('request');
 
-const host = process.env.SMOKE_HOST || 'http://localhost:8444';
+const host = process.env.SMOKE_HOST || 'http://localhost:8557';
 
 test('200', function (t) {
     request({

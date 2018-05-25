@@ -18,15 +18,6 @@ server.use(log.middleware);
 server.use(cookies.parse);
 server.pre(restify.pre.sanitizePath());
 
-// Max body size in megabytes
-const MAX_BODY_SIZE = parseInt(process.env.MAX_BODY_SIZE || '10', 10);
-server.use(restify.plugins.bodyParser({
-    maxBodySize: MAX_BODY_SIZE * 1024 * 1024
-}));
-server.use(restify.plugins.queryParser({
-    mapParams: true
-}));
-
 // CORS
 var cors = restifyCors({
     preflightMaxAge: 5,
@@ -56,7 +47,7 @@ if (USE_THROTTLE) {
 // Handle uncaught exceptions
 server.on('restifyError', (req, res, err) => {
     if (!err.handled) log.error(err);
-    res.send(500);
+    res.send(err);
 });
 
 // Routes
@@ -69,9 +60,9 @@ server.get('/:hashname', routes.get);
 server.post('/:hashname', auth, session, setup, routes.post);
 
 // Legacy routes (@deprecated)
-server.get('/internalapi/asset/:hashname/get', routes.get);
+server.get('/internalapi/assets/:hashname/get/', routes.get);
 server.post(
-    '/internalapi/asset/:hashname/set',
+    '/internalapi/assets/:hashname/set/',
     auth,
     session,
     setup,
