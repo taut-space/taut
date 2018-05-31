@@ -30,11 +30,10 @@ smoke:
 	$(TAP) ./test/smoke/*.js
 
 load:
-	$(WRK) -t 2 -c 2 -d 10s --latency http://scratch-projects-stage.us-east-1.elasticbeanstalk.com/health
-	$(WRK) -t 2 -c 2 -d 10s --latency http://scratch-projects-stage.us-east-1.elasticbeanstalk.com/crossdomain.xml
-	$(WRK) -t 2 -c 2 -d 10s --latency http://scratch-projects-stage.us-east-1.elasticbeanstalk.com/114137267
-	$(WRK) -t 2 -c 2 -d 10s --latency -s ./test/fixtures/post.lua http://scratch-projects-stage.us-east-1.elasticbeanstalk.com
-	$(WRK) -t 2 -c 2 -d 10s --latency -s ./test/fixtures/put.lua http://scratch-projects-stage.us-east-1.elasticbeanstalk.com/114137267
+	$(WRK) -t 2 -c 2 -d 10s --latency http://scratch-assets-staging.us-east-1.elasticbeanstalk.com/health
+	$(WRK) -t 2 -c 2 -d 10s --latency http://scratch-assets-staging.us-east-1.elasticbeanstalk.com/crossdomain.xml
+	$(WRK) -t 2 -c 2 -d 10s --latency http://scratch-assets-staging.us-east-1.elasticbeanstalk.com/eed459aa6ca84d7403768731519d60d3.png
+	$(WRK) -t 2 -c 2 -d 10s --latency -s ./test/fixtures/post.lua http://scratch-assets-staging.us-east-1.elasticbeanstalk.com/eed459aa6ca84d7403768731519d60d3.png
 
 # ------------------------------------------------------------------------------
 
