@@ -18,6 +18,7 @@
     "aws-sdk": "~2.240.1",
     "bunyan": "~1.8.12",
     "fastly": "~2.2.0",
+    "lodash": "~4.17.10",
     "newrelic": "~4.1.1",
     "request": "~2.86.0",
     "restify": "~7.1.2",
