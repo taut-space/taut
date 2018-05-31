@@ -16,7 +16,6 @@ const routes = require('./lib/routes');
 const server = restify.createServer();
 server.use(log.middleware);
 server.use(cookies.parse);
-server.pre(restify.pre.sanitizePath());
 
 // CORS
 var cors = restifyCors({
