@@ -5,7 +5,7 @@ const request = require('request');
 const host = process.env.SMOKE_HOST || 'http://localhost:8557';
 
 // Send a good everything, get a 200 and json
-test('200', function (t) {
+test('good', function (t) {
     var image = fs.readFileSync('./test/fixtures/a.png');
     request({
         method: 'POST',
@@ -27,7 +27,7 @@ test('200', function (t) {
 });
 
 // Send a good everything and invalid credentials, get Forbidden
-test('403', function (t) {
+test('bad-credentials', function (t) {
     var image = fs.readFileSync('./test/fixtures/a.png');
     request({
         method: 'POST',
@@ -44,7 +44,7 @@ test('403', function (t) {
 });
 
 // Send a good everything and no credentials, get Forbidden
-test('403', function (t) {
+test('no-credentials', function (t) {
     var image = fs.readFileSync('./test/fixtures/a.png');
     request({
         method: 'POST',
@@ -58,7 +58,7 @@ test('403', function (t) {
 });
 
 // Send a bad hashname, get BadRequest
-test('400', function (t) {
+test('bad-hashname', function (t) {
     var image = fs.readFileSync('./test/fixtures/a.png');
     request({
         method: 'POST',
@@ -77,7 +77,7 @@ test('400', function (t) {
 
 // Send an object that is too damn big!
 // Send a good everything, get a 200 and json
-test('400', function (t) {
+test('too-big', function (t) {
     var image = fs.readFileSync('./test/fixtures/toobig.png');
     request({
         method: 'POST',
@@ -88,7 +88,7 @@ test('400', function (t) {
         }
     }, function (err, res, body) {
         t.equal(err, null);
-        t.equal(res.statusCode, 400);
+        t.equal(res.statusCode, 413);
         t.type(res, 'object');
         t.type(body, 'string');
         t.end();
