@@ -59,9 +59,9 @@ server.get('/:hashname', routes.get);
 server.post('/:hashname', auth, session, setup, routes.post);
 
 // Legacy routes (@deprecated)
-server.get('/internalapi/assets/:hashname/get/', routes.get);
+server.get('/internalapi/asset/:hashname/get/', routes.get);
 server.post(
-    '/internalapi/assets/:hashname/set/',
+    '/internalapi/asset/:hashname/set/',
     auth,
     session,
     setup,
