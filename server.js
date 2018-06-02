@@ -16,7 +16,6 @@ const routes = require('./lib/routes');
 const server = restify.createServer();
 server.use(log.middleware);
 server.use(cookies.parse);
-server.pre(restify.pre.sanitizePath());
 
 // CORS
 var cors = restifyCors({
@@ -60,9 +59,9 @@ server.get('/:hashname', routes.get);
 server.post('/:hashname', auth, session, setup, routes.post);
 
 // Legacy routes (@deprecated)
-server.get('/internalapi/assets/:hashname/get/', routes.get);
+server.get('/internalapi/asset/:hashname/get/', routes.get);
 server.post(
-    '/internalapi/assets/:hashname/set/',
+    '/internalapi/asset/:hashname/set/',
     auth,
     session,
     setup,

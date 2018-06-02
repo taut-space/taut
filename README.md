@@ -73,7 +73,7 @@
 * Note that the EB application service runs with IAM Role based permissions and therefore **does not** make use of `AWS_ACCESS_KEY_ID` nor `AWS_SECRET_ACCESS_KEY` when running in production or staging environments. These values are only used if run with `NODE_ENV=testing`
 
 ## Docker usage
-This repository ships with a `.env` file that defines testing credentials that only allow access to `scratch2-assets-test` when spun up into a standalone docker container.
+This repository ships with an `env.sample` file that provides the names of these environment variables. Copy this file to `.env` and populate with correct values.
 For more tips see:  [Working with docker and Scratch development](https://github.com/LLK/scratch-ops/wiki/Working-with-Docker-and-Scratch-Development)
 
 ### Start up
