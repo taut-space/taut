@@ -20,7 +20,7 @@
     "fastly": "~2.2.0",
     "lodash": "~4.17.10",
     "newrelic": "~4.1.1",
-    "request": "~2.86.0",
+    "request": "~2.87.0",
     "restify": "~7.1.2",
     "restify-cookies": "~0.2.2",
     "restify-cors-middleware": "~1.1.0",
