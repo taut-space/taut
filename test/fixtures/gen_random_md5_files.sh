@@ -15,7 +15,7 @@ fi
 mkdir -p tmp
 
 function make_some_data () {
-  echo "Generating $1 file(s) with [$(($2*))$2,$3] x $4 block sizes: "
+  echo "Generating $1 file(s) with [$2,$3] x $4 block sizes: "
   for i in `seq 1 $1`
   do
     SEED=$(od -vAn -N4 -tu4 < /dev/urandom | head -1 | awk '{$1=$1;print}')
