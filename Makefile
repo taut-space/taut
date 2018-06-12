@@ -38,7 +38,7 @@ load:
 upload:
 	rm -f ./tmp/*.dat
 	./test/fixtures/gen_random_md5_files.sh
-	$(WRK) -t 2 -c 4 -d 30s --latency -s ./test/fixtures/post_a_lot.lua http://scratch-assets-staging.us-east-1.elasticbeanstalk.com/
+	$(WRK) -t 2 -c 4 -d 30s --latency --timeout 5s -s ./test/fixtures/post_a_lot.lua http://scratch-assets-staging.us-east-1.elasticbeanstalk.com/
 # ------------------------------------------------------------------------------
 
 .PHONY: start lint test coverage smoke load
