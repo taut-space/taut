@@ -34,5 +34,5 @@ make_some_data 25 7 19 512k
 # More mediums, 75 x 50-1250KB
 make_some_data 75 1 25 50k
 
-# Even more small, 200 x 1-40KB
-make_some_data 200 1 40 1k
+# Even more small, 300 x 1-40KB
+make_some_data 300 1 40 1k
