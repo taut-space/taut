@@ -4,7 +4,7 @@ echo "Warning, this script creates a lot of test file data"
 echo "  This script is used to create files for load testing scratch-assets"
 echo "  The wrk test runs by loading all these test files into memory and then"
 echo "  uploading them to staging"
-echo "  YOU NEED TO rm tmp/*.dat after running this!"
+echo "  You may want to run rm tmp/*.dat after running this!"
 
 if [ `which md5` ]; then
     MD5="md5 -q"
@@ -15,7 +15,7 @@ fi
 mkdir -p tmp
 
 function make_some_data () {
-  echo "Generating $1 file(s) with [$2,$3] x $4 block sizes: "
+  echo "Generating $1 file(s) with [$(($2*))$2,$3] x $4 block sizes: "
   for i in `seq 1 $1`
   do
     SEED=$(od -vAn -N4 -tu4 < /dev/urandom | head -1 | awk '{$1=$1;print}')
