@@ -35,6 +35,10 @@ load:
 	$(WRK) -t 2 -c 2 -d 10s --latency http://scratch-assets-staging.us-east-1.elasticbeanstalk.com/eed459aa6ca84d7403768731519d60d3.png
 	$(WRK) -t 2 -c 2 -d 10s --latency -s ./test/fixtures/post.lua http://scratch-assets-staging.us-east-1.elasticbeanstalk.com/eed459aa6ca84d7403768731519d60d3.png
 
+upload:
+	rm -f ./tmp/*.dat
+	./test/fixtures/gen_random_md5_files.sh
+	$(WRK) -t 2 -c 4 -d 20s --latency --timeout 5s -s ./test/fixtures/post_a_lot.lua http://scratch-assets-staging.us-east-1.elasticbeanstalk.com/
 # ------------------------------------------------------------------------------
 
 .PHONY: start lint test coverage smoke load

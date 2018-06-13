@@ -116,3 +116,30 @@ npm test
 ```bash
 make coverage
 ```
+
+## Load Testing
+
+### Test GETs and one upload
+```bash
+make load
+```
+
+### Test raw uploading performance
+```bash
+make upload
+```
+
+This will perform the following:
+* Clear out any previous test data named `./tmp/*.dat`
+* Generate test files in `./tmp`:
+  * Distribution of sizes
+    * 25 large files 3.5-10MB
+    * 75 medium sized files 50KB-1.25MB
+    * 200 small files 1KB-45KB 
+  * Named MD5HASH.dat
+* Will run `wrk` using `./test/fixtures/post_a_lot.lua` to load all test data into memory
+  * Will be uploaded to the backend store configured for staging.
+  * Will run for 30s
+  * Known issue: the estimation of the transfer rate appears to be wrong in `wrk`
+  
+
