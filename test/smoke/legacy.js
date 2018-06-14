@@ -2,7 +2,7 @@ const fs = require('fs');
 const request = require('request');
 const test = require('tap').test;
 
-const host = process.env.SMOKE_HOST || 'http://localhost:8557';
+const host = process.env.SMOKE_HOST || 'http://localhost:7407';
 
 /**
  * Get the Scratch Cat via old API
