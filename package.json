@@ -1,13 +1,13 @@
 {
-  "name": "scratch-assets",
+  "name": "taut",
   "version": "1.0.0",
-  "description": "HTTP server for saving & retrieving Scratch assets.",
+  "description": "HTTP based object store using a graph tree",
   "author": "Massachusetts Institute of Technology",
   "license": "private",
-  "homepage": "https://github.com/LLK/scratch-assets#readme",
+  "homepage": "https://github.com/taut-space/taut#readme",
   "repository": {
     "type": "git",
-    "url": "git+ssh://git@github.com/LLK/scratch-assets.git"
+    "url": "git+ssh://git@github.com/taut-space/taut.git"
   },
   "scripts": {
     "start": "make start",
@@ -24,8 +24,7 @@
     "restify": "~7.1.2",
     "restify-cookies": "~0.2.2",
     "restify-cors-middleware": "~1.1.0",
-    "restify-errors": "~6.1.0",
-    "scratch-asset-types": "~1.1.0"
+    "restify-errors": "~6.1.0"
   },
   "devDependencies": {
     "eslint": "^4.7.2",

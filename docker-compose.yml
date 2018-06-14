@@ -5,25 +5,22 @@ volumes:
   runtime_data:
 
 networks:
-  scratch_assets_network:
+  taut_network:
 
 services:
-  scratch-assets:
-    container_name: scratch-assets
-    image: scratch-assets:latest
-    hostname: scratch-assets
+  taut:
+    container_name: taut
+    image: taut:latest
+    hostname: taut
     environment:
       - CHOKIDAR_INTERVAL=2500
       - AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY_ID}
       - AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY}
       - AWS_S3_BUCKET=${AWS_S3_BUCKET}
-      - FASTLY_EDGE_HEADER=${FASTLY_EDGE_HEADER}
-      - SCRATCH_EDGE_HEADER=${SCRATCH_EDGE_HEADER}
-      - BACKEND_HOST=${BACKEND_HOST}
     build:
       context: ./
       dockerfile: Dockerfile
-    image: scratch-assets:latest
+    image: taut:latest
     command: nodemon --legacy-watch --ignore node_modules --ignore test/ server.js
     volumes:
       - type: bind
@@ -36,6 +33,6 @@ services:
       - runtime_data:/runtime
       - "./certs:/certs"
     ports:
-      - "8557:8557"
+      - "7407:7407"
     networks:
-      - scratch_assets_network
+      - taut_network

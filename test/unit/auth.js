@@ -12,8 +12,8 @@ test('valid', function (t) {
             cookie: 'foobar'
         },
         cookies: {
-            scratchsessionsid: 'foo',
-            scratchcsrftoken: 'bar'
+            tautsessionsid: 'foo',
+            tautcsrftoken: 'bar'
         }
     };
     auth(req, {}, function (err) {
@@ -25,8 +25,8 @@ test('valid', function (t) {
 test('missing cookie header', function (t) {
     const req = {
         cookies: {
-            scratchsessionsid: 'foo',
-            scratchcsrftoken: 'bar'
+            tautsessionsid: 'foo',
+            tautcsrftoken: 'bar'
         }
     };
     auth(req, {}, function (err) {
@@ -41,7 +41,7 @@ test('missing session', function (t) {
             cookie: 'foobar'
         },
         cookies: {
-            scratchcsrftoken: 'bar'
+            tautcsrftoken: 'bar'
         }
     };
     auth(req, {}, function (err) {
@@ -56,7 +56,7 @@ test('missing csrf', function (t) {
             cookie: 'foobar'
         },
         cookies: {
-            scratchsessionsid: 'foo'
+            tautsessionsid: 'foo'
         }
     };
     auth(req, {}, function (err) {
