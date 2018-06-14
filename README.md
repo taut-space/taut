@@ -3,9 +3,11 @@
 
 
 
-| `GET`  | `/health` | Returns basic health information (used for load balancing)  |
-| `POST` | `/:hashname`    | Store an asset with the specified hashname            |
-| `GET`  | `/:hashname`    | Get an existing asset with the specified hashname     |
+| METHOD | End-point    | Description                                 |
+| ------ | ------------ | ------------------------------------------- |
+| `GET`  | `/health`    | Returns basic health information (used for load balancing)  |
+| `POST` | `/:hashname` | Store an asset with the specified hashname            |
+| `GET`  | `/:hashname` | Get an existing asset with the specified hashname     |
 
 * Note that the `id` is the md5 hash of the contents of the asset appended with the media type of `png|svg|wav|json|...`
 
