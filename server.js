@@ -5,6 +5,7 @@ if (typeof process.env.NEW_RELIC_LICENSE_KEY === 'string') {
 const restify = require('restify');
 const restifyCors = require('restify-cors-middleware');
 const cookies = require('restify-cookies');
+const sessions = require('client-sessions');
 
 const auth = require('./lib/auth');
 const session = require('./lib/session');
@@ -17,11 +18,22 @@ const server = restify.createServer();
 server.use(log.middleware);
 server.use(cookies.parse);
 
+// Session management
+server.use(sessions({
+    // cookie name dictates the key name added to the request object
+    cookieName: 's',
+    // should be a large unguessable string
+    secret: process.env.SECRET || 'yoursecret',
+    // how long the session will stay valid in ms
+    // Default 14 days
+    duration: 14 * 24 * 60 * 60 * 1000    
+}));
+
 // CORS
 var cors = restifyCors({
     preflightMaxAge: 5,
     origins: (process.env.CORS_ORIGINS || '*').split(','),
-    allowHeaders: ['x-requested-with', 'x-token', 'accept-language'],
+    allowHeaders: ['x-requested-with', 'x-token'],
     exposeHeaders: []
 });
 server.pre(cors.preflight);
@@ -50,26 +62,14 @@ server.on('restifyError', (req, res, err) => {
 });
 
 // Routes
-server.get('/', routes.health);
 server.get('/health', routes.health);
-server.get('/crossdomain.xml', routes.crossdomain);
 
 // 3.0 routes
 server.get('/:hashname', routes.get);
 server.post('/:hashname', auth, session, setup, routes.post);
 
-// Legacy routes (@deprecated)
-server.get('/internalapi/asset/:hashname/get/', routes.get);
-server.post(
-    '/internalapi/asset/:hashname/set/',
-    auth,
-    session,
-    setup,
-    routes.post
-);
-
 // Start listening for HTTP requests
-const port = process.env.PORT || 8557;
+const port = process.env.PORT || 7407;
 server.listen(port, function () {
     log.info('Server listening on port ' + port);
 });
