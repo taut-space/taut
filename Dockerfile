@@ -10,5 +10,5 @@ RUN rm -rf ./node_modules
 RUN npm install
 RUN npm install -g nodemon tap
 
-EXPOSE 8557
+EXPOSE 7407
 

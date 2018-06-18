@@ -43,9 +43,9 @@ docker-compose down -v
 ### Examples Accessing
 
 ```bash
-curl http://localhost:8557/health
-curl -H "Content-type: application/octet-stream" -H "Cookie: session..."--data-binary @a.png http://localhost:8557/eed459aa6ca84d7403768731519d60d3.png
-curl http://localhost:8557/eed459aa6ca84d7403768731519d60d3.png
+curl http://localhost:7407/health
+curl -H "Content-type: application/octet-stream" -H "Cookie: session..."--data-binary @a.png http://localhost:7407/eed459aa6ca84d7403768731519d60d3.png
+curl http://localhost:7407/eed459aa6ca84d7403768731519d60d3.png
 ```
 
 You can attach to the running docker container and run the tests:
