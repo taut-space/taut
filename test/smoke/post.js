@@ -1,6 +1,9 @@
-const test = require('tap').test;
+const async = require('async');
 const fs = require('fs');
+const md5 = require('md5');
 const request = require('request');
+const sr = require('seed-random');
+const test = require('tap').test;
 
 const host = process.env.SMOKE_HOST || 'http://localhost:8557';
 
@@ -91,6 +94,60 @@ test('too-big', function (t) {
         t.equal(res.statusCode, 413);
         t.type(res, 'object');
         t.type(body, 'string');
+        t.end();
+    });
+});
+
+test('random-buffer-post-get', function (t) {
+    var length = 20000;
+    var rand = sr();
+    var buf = new Buffer(length);
+
+    for (var i = 0; i < length; ++i) {
+        buf[i] = (rand() * 0xFF)<<0;
+    }
+    
+    var hashname = md5(buf) + '.dat';
+    
+    async.auto({
+        post: function (asyncCallback) {
+            request({
+                method: 'POST',
+                uri: host + '/' + hashname,
+                body: buf,
+                headers: {
+                    Cookie: require('../fixtures/users.json').valid
+                }
+            }, function (err, res, body) {
+                t.equal(err, null);
+                t.equal(res.statusCode, 200);
+                t.type(res, 'object');
+                t.type(body, 'string');
+                var obj = JSON.parse(body);
+                t.equal(obj.status, 'ok');
+                t.equal(obj['content-name'], hashname);
+                asyncCallback(null);
+            });
+        },
+        get: ['post', function (obj, asyncCallback) {
+            request({
+                method: 'GET',
+                uri: host + '/' + hashname,
+                body: buf,
+                headers: {
+                    Cookie: require('../fixtures/users.json').valid
+                }
+            }, function (err, res, body) {
+                t.equal(err, null);
+                t.equal(res.statusCode, 200);
+                t.type(res, 'object');
+                t.type(body, 'string');
+                t.true(body === buf.toString());
+                asyncCallback(null);
+            });
+        }],
+    }, function (err) {
+        t.assert(!err);
         t.end();
     });
 });
