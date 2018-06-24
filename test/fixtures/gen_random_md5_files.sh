@@ -1,7 +1,7 @@
 #!/bin/bash
 
 echo "Warning, this script creates a lot of test file data"
-echo "  This script is used to create files for load testing taut"
+echo "  This script is used to create files for load testing scratch-assets"
 echo "  The wrk test runs by loading all these test files into memory and then"
 echo "  uploading them to staging"
 echo "  You may want to run rm tmp/*.dat after running this!"

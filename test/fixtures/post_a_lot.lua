@@ -36,7 +36,7 @@ fileBodies = getBodies(fileNames)
 
 wrk.method = "POST"
 wrk.headers["Content-Type"] = "application/octet-stream"
-wrk.headers["Cookie"] = "tautsessionsid=; tautcsrftoken="
+wrk.headers["Cookie"] = "FILLME"
 math.randomseed(tonumber(tostring({}):sub(8))+os.time())
 
 request = function()
