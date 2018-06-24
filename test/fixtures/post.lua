@@ -8,5 +8,5 @@ end
 wrk.method = "POST"
 wrk.body   = readAll('./test/fixtures/a.png')
 wrk.headers["Content-Type"] = "application/octet-stream"
-wrk.headers["Cookie"] = "tautsessionsid=; tautcsrftoken="
+wrk.headers["Cookie"] = ""
 
