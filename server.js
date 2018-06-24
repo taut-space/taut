@@ -75,7 +75,7 @@ server.post(
 );
 
 // Start listening for HTTP requests
-const port = process.env.PORT || 8557;
+const port = process.env.PORT || 7407;
 server.listen(port, function () {
     log.info('Server listening on port ' + port);
 });
